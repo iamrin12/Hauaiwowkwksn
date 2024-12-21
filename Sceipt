@@ -1,0 +1,28 @@
+GameName = "Hypergalactic: Monkey Quest" 
+
+tab1name = "Main" 
+
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/bloodball/-back-ups-for-libs/main/wizard"))() 
+
+local GameName = Library:NewWindow(GameName) 
+
+local Tab1 = GameName:NewSection(tab1name) 
+
+-- Toggle for Infinite Money
+Tab1:CreateToggle("Inf Money", function(value)
+    _G.name = value
+    while _G.name == true do
+        while wait(1) do
+            game:GetService("ReplicatedStorage").Remotes.CoinCollectEvent:FireServer()
+        end
+        wait(5) 
+    end
+end)
+
+local Tab2 = GameName:NewSection("Raizen")
+
+-- Adding a Discord Link
+Tab2:CreateButton("Join Discord Server", function()
+    setclipboard("https://discord.gg/rF34cs4D")
+    print("Discord link copied to clipboard!")
+end)
